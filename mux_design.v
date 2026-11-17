@@ -2,11 +2,13 @@
 module mux_good(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(Y, H, J);
 endmodule
 
@@ -15,11 +17,13 @@ endmodule
 module mux_f1(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, 1'b0, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(Y, H, J);
 endmodule
 
@@ -28,11 +32,13 @@ endmodule
 module mux_f2(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, 1'b1, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(Y, H, J);
 endmodule
 
@@ -41,11 +47,13 @@ endmodule
 module mux_f3(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, 1'b0, S);
+  and and2(J, 1'b0, E);
   or  or1(Y, H, J);
 endmodule
 
@@ -54,11 +62,13 @@ endmodule
 module mux_f4(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, 1'b1, S);
+  and and2(J, 1'b1, E);
   or  or1(Y, H, J);
 endmodule
 
@@ -67,11 +77,13 @@ endmodule
 module mux_f5(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, 1'b0);
+  buf buffD(D, 1'b0);
+  buf buffE(E, 1'b0);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, 1'b0);
+  and and2(J, B, E);
   or  or1(Y, H, J);
 endmodule
 
@@ -80,128 +92,206 @@ endmodule
 module mux_f6(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, 1'b1);
+  buf buffD(D, 1'b1);
+  buf buffE(E, 1'b1);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, 1'b1);
+  and and2(J, B, E);
   or  or1(Y, H, J);
 endmodule
 
 
-// fault 7 : G stuck at 0
+// fault 7 : D stuck at 0
 module mux_f7(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
-  and and1(H, A, 1'b0);
-  and and2(J, B, S);
+  buf buffD(D, 1'b0);
+  buf buffE(E, S);
+  not not1(G, D);
+  and and1(H, A, G);
+  and and2(J, B, E);
   or  or1(Y, H, J);
 endmodule
 
 
-// fault 8 : G stuck at 1
+// fault 8 : D stuck at 1
 module mux_f8(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
-  and and1(H, A, 1'b1);
-  and and2(J, B, S);
+  buf buffD(D, 1'b1);
+  buf buffE(E, S);
+  not not1(G, D);
+  and and1(H, A, G);
+  and and2(J, B, E);
   or  or1(Y, H, J);
 endmodule
 
 
-// fault 9 : H stuck at 0
+// fault 9 : E stuck at 0
 module mux_f9(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, 1'b0);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
+  or  or1(Y, H, J);
+endmodule
+
+
+// fault 10 : E stuck at 1
+module mux_f10(A, B, S, Y);
+  input A, B, S;
+  output Y;
+  wire D, E, G, H, J;
+
+  buf buffD(D, S);
+  buf buffE(E, 1'b1);
+  not not1(G, D);
+  and and1(H, A, G);
+  and and2(J, B, E);
+  or  or1(Y, H, J);
+endmodule
+
+
+// fault 11 : G stuck at 0
+module mux_f11(A, B, S, Y);
+  input A, B, S;
+  output Y;
+  wire D, E, G, H, J;
+
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
+  and and1(H, A, 1'b0);
+  and and2(J, B, E);
+  or  or1(Y, H, J);
+endmodule
+
+
+// fault 12 : G stuck at 1
+module mux_f12(A, B, S, Y);
+  input A, B, S;
+  output Y;
+  wire D, E, G, H, J;
+
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
+  and and1(H, A, 1'b1);
+  and and2(J, B, E);
+  or  or1(Y, H, J);
+endmodule
+
+
+// fault 13 : H stuck at 0
+module mux_f13(A, B, S, Y);
+  input A, B, S;
+  output Y;
+  wire D, E, G, H, J;
+
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
+  and and1(H, A, G);
+  and and2(J, B, E);
   or  or1(Y, 1'b0, J);
 endmodule
 
 
-// fault 10 : H stuck at 1
-module mux_f10(A, B, S, Y);
+// fault 14 : H stuck at 1
+module mux_f14(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(Y, 1'b1, J);
 endmodule
 
 
-// fault 11 : J stuck at 0
-module mux_f11(A, B, S, Y);
+// fault 15 : J stuck at 0
+module mux_f15(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(Y, H, 1'b0);
 endmodule
 
 
-// fault 12 : J stuck at 1
-module mux_f12(A, B, S, Y);
+// fault 16 : J stuck at 1
+module mux_f16(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J;
+  wire D, E, G, H, J;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(Y, H, 1'b1);
 endmodule
 
 
-// fault 13 : Y stuck at 0
-module mux_f13(A, B, S, Y);
+// fault 17 : Y stuck at 0
+module mux_f17(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J, YY;
+  wire D, E, G, H, J, YY;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(YY, H, J);
-  buf buf1(Y, 1'b0);
+  buf buffY(Y, 1'b0);
 endmodule
 
 
-// fault 14 : Y stuck at 1
-module mux_f14(A, B, S, Y);
+// fault 18 : Y stuck at 1
+module mux_f18(A, B, S, Y);
   input A, B, S;
   output Y;
-  wire G, H, J, YY;
+  wire D, E, G, H, J, YY;
 
-  not not1(G, S);
+  buf buffD(D, S);
+  buf buffE(E, S);
+  not not1(G, D);
   and and1(H, A, G);
-  and and2(J, B, S);
+  and and2(J, B, E);
   or  or1(YY, H, J);
-  buf buf1(Y, 1'b1);
+  buf buffY(Y, 1'b1);
 endmodule
 
 
-// To check circuit 
-module fault_check(A, B, S, yg, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, found);
+// checking circuit
+module fault_check(A, B, S, yg, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, found);
   input A, B, S;
   output yg;
-  output d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14;
+  output d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18;
   output found;
-  wire y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11, y12, y13, y14;
+  wire y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11, y12, y13, y14, y15, y16, y17, y18;
 
   mux_good m0(A, B, S, yg);
 
@@ -219,6 +309,10 @@ module fault_check(A, B, S, yg, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d1
   mux_f12 m12(A, B, S, y12);
   mux_f13 m13(A, B, S, y13);
   mux_f14 m14(A, B, S, y14);
+  mux_f15 m15(A, B, S, y15);
+  mux_f16 m16(A, B, S, y16);
+  mux_f17 m17(A, B, S, y17);
+  mux_f18 m18(A, B, S, y18);
 
   xor x1(d1, yg, y1);
   xor x2(d2, yg, y2);
@@ -234,6 +328,10 @@ module fault_check(A, B, S, yg, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d1
   xor x12(d12, yg, y12);
   xor x13(d13, yg, y13);
   xor x14(d14, yg, y14);
+  xor x15(d15, yg, y15);
+  xor x16(d16, yg, y16);
+  xor x17(d17, yg, y17);
+  xor x18(d18, yg, y18);
 
-  or o1(found, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14);
+  or o1(found, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18);
 endmodule
