@@ -13,7 +13,7 @@ module mux_good(A, B, S, Y);
 endmodule
 
 
-// fault 1 : A stuck at 0
+// fault 1 : A/0  (A stuck at 0)
 module mux_f1(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -28,7 +28,7 @@ module mux_f1(A, B, S, Y);
 endmodule
 
 
-// fault 2 : A stuck at 1
+// fault 2 : A/1  (A stuck at 1)
 module mux_f2(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -43,7 +43,7 @@ module mux_f2(A, B, S, Y);
 endmodule
 
 
-// fault 3 : B stuck at 0
+// fault 3 : B/0  (B stuck at 0)
 module mux_f3(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -58,7 +58,7 @@ module mux_f3(A, B, S, Y);
 endmodule
 
 
-// fault 4 : B stuck at 1
+// fault 4 : B/1  (B stuck at 1)
 module mux_f4(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -73,7 +73,7 @@ module mux_f4(A, B, S, Y);
 endmodule
 
 
-// fault 5 : S stuck at 0
+// fault 5 : S/0  (S stuck at 0)
 module mux_f5(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -88,7 +88,7 @@ module mux_f5(A, B, S, Y);
 endmodule
 
 
-// fault 6 : S stuck at 1
+// fault 6 : S/1  (S stuck at 1)
 module mux_f6(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -103,7 +103,7 @@ module mux_f6(A, B, S, Y);
 endmodule
 
 
-// fault 7 : D stuck at 0
+// fault 7 : D/0  (D stuck at 0)
 module mux_f7(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -118,7 +118,7 @@ module mux_f7(A, B, S, Y);
 endmodule
 
 
-// fault 8 : D stuck at 1
+// fault 8 : D/1  (D stuck at 1)
 module mux_f8(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -133,7 +133,7 @@ module mux_f8(A, B, S, Y);
 endmodule
 
 
-// fault 9 : E stuck at 0
+// fault 9 : E/0  (E stuck at 0)
 module mux_f9(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -148,7 +148,7 @@ module mux_f9(A, B, S, Y);
 endmodule
 
 
-// fault 10 : E stuck at 1
+// fault 10 : E/1  (E stuck at 1)
 module mux_f10(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -163,7 +163,7 @@ module mux_f10(A, B, S, Y);
 endmodule
 
 
-// fault 11 : G stuck at 0
+// fault 11 : G/0  (G stuck at 0)
 module mux_f11(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -178,7 +178,7 @@ module mux_f11(A, B, S, Y);
 endmodule
 
 
-// fault 12 : G stuck at 1
+// fault 12 : G/1  (G stuck at 1)
 module mux_f12(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -193,7 +193,7 @@ module mux_f12(A, B, S, Y);
 endmodule
 
 
-// fault 13 : H stuck at 0
+// fault 13 : H/0  (H stuck at 0)
 module mux_f13(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -208,7 +208,7 @@ module mux_f13(A, B, S, Y);
 endmodule
 
 
-// fault 14 : H stuck at 1
+// fault 14 : H/1  (H stuck at 1)
 module mux_f14(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -223,7 +223,7 @@ module mux_f14(A, B, S, Y);
 endmodule
 
 
-// fault 15 : J stuck at 0
+// fault 15 : J/0  (J stuck at 0)
 module mux_f15(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -238,7 +238,7 @@ module mux_f15(A, B, S, Y);
 endmodule
 
 
-// fault 16 : J stuck at 1
+// fault 16 : J/1  (J stuck at 1)
 module mux_f16(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -253,7 +253,7 @@ module mux_f16(A, B, S, Y);
 endmodule
 
 
-// fault 17 : Y stuck at 0
+// fault 17 : Y/0  (Y stuck at 0)
 module mux_f17(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -269,7 +269,7 @@ module mux_f17(A, B, S, Y);
 endmodule
 
 
-// fault 18 : Y stuck at 1
+// fault 18 : Y/1  (Y stuck at 1)
 module mux_f18(A, B, S, Y);
   input A, B, S;
   output Y;
@@ -286,7 +286,7 @@ endmodule
 
 
 // checking circuit
-module fault_check(A, B, S, yg, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, found);
+module fault_check(A, B, S, yg,d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, found);
   input A, B, S;
   output yg;
   output d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18;
