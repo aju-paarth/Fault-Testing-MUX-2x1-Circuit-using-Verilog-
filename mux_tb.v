@@ -4,11 +4,7 @@ module mux_tb;
   wire yg;
   wire d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18;
   wire found;
-
-  fault_check uut(A, B, S, yg,
-                  d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18,
-                  found);
-
+  fault_check uut(A, B, S, yg, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, found);
   initial begin
     $dumpfile("dump.vcd");
     $dumpvars(0, mux_tb);
@@ -40,7 +36,6 @@ module mux_tb;
 
     S = 1; A = 1; B = 1; #10;
     $display("T7      %b %b %b |  %b |  %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b   %b  |   %b", S, A, B, yg, d1, d2, d3, d4, d5, d6, d7, d8, d9, d10, d11, d12, d13, d14, d15, d16, d17, d18, found);
-
     $finish;
   end
 endmodule
